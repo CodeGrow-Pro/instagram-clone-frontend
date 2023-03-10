@@ -1,0 +1,104 @@
+section {
+    border-left:1px solid #DBDBDB;
+
+}
+.posts , .suggestion{
+    padding: 30px 0px;
+    display: flex;
+}
+.suggestion {
+    display: flex;
+    flex-direction: column;
+}
+.suggestion_user {
+    align-items: center;
+    color: rgb(174, 171, 171);
+    font-weight: 500;
+}
+.stories-body{
+    width: 690px;
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    margin: 10px 10px;
+}
+.stories-body::-webkit-scrollbar{
+    display: none;
+}
+#story{
+    width:100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.story a{
+    color: black;
+    text-decoration: none;
+   overflow: hidden;
+}
+.story img {
+   border: 2px solid;
+   border-color: rgb(239, 83, 83);
+   padding: 2px;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+.story img:hover , .username{
+    cursor: pointer;
+}
+.username{
+    margin-top: 0px;
+}
+.user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.user div h4{
+    width: 100px;
+    font-size: 16px;
+    font-weight: 600;
+    overflow-y: hidden;
+    margin-bottom: -15px;
+}
+.user div p{
+    color: rgb(152, 151, 151);
+}
+.user button {
+    margin-left: 70px;
+    border: none;
+    background-color: transparent;
+    color: #0395F6 ;
+    /* font-weight: bold; */
+}
+.suggestion_user {
+  position: relative;
+}
+.suggestion_user span button{
+    border: none;
+    background-color: transparent;
+    color: #0395F6 ;
+   position: absolute;
+   top: 14px;
+   right: 0;
+}
+.user button:hover,
+.suggestion_user span button:hover{
+    color: rgb(46, 45, 45);
+    cursor: pointer;
+}
+.suggestion_user p{
+    font-size: 14px;
+}
+.suggestions_user_show{
+    margin-bottom: 5px;
+}
+.suggestions_user_show img{
+    width: 40px;
+    height: 40px;
+}
+.suggestions_user_show button{
+    margin-left: 81px;
+}

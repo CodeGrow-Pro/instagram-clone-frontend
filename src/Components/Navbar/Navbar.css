@@ -1,0 +1,53 @@
+.navbar{
+    width: 15.5rem;
+    height:100vh;
+   float: left;
+   margin-right: 20px;
+   position: relative;
+
+}
+.navbar .navbar_logo {
+    width: 105px;
+    padding: 35px 30px;
+    padding-bottom:10px;
+    position: fixed;
+}
+.navbar_menu {
+    list-style-type: none;
+    position: fixed;
+    top: 90px;
+}
+.navbar_menu a{
+    text-decoration: none;
+    color: rgb(70, 69, 69);
+}
+li ,span{
+    width: 8rem;
+display: flex;
+align-items: center;
+padding: 5px 10px;
+margin-bottom: 5px;
+margin-left: -15px;
+}
+span{
+    margin-left: 15px;
+}
+.profile{
+    width: 25px;
+    height: 25px;
+    border:1px solid #DBDBDB;
+    padding: 2px;
+    border-radius: 50%;
+}
+li span:active{
+    color: black;
+    font-weight: bold;
+}
+li:hover,
+li:active{
+    width: 100%;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    font-weight: 500;
+    cursor: pointer;
+}

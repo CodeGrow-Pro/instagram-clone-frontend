@@ -1,0 +1,76 @@
+.main_account {
+    border-left: 1px solid rgb(171, 167, 167);
+}
+.account {
+    display: flex;
+    flex-direction: column;
+}
+.user_account {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 4rem;
+}
+.account_details {
+    padding: 20px 70px;
+    display: flex;
+    justify-content: center;
+    color: #262626;
+    border-bottom: 1px solid rgb(174, 172, 172);
+}
+.account_details img{
+    width:150px;
+    height:150px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    border:2px solid rgb(184, 177, 177)
+}
+.details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #262626;
+}
+.details p{
+    font-size: 22px;
+}
+.details button {
+    margin-left: 20px;
+    margin-right: 10px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    background-color: #efefef;
+    border:none;
+    font-weight: 600;
+    cursor: pointer;
+}
+.action {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-right: 10px;
+    border-bottom: 1px solid rgb(174, 172, 172);
+
+}
+.followers{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: -26px;
+}
+.followers strong{
+    margin-right: 4px;
+    color: #262626;
+}
+.account_activity{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px;
+    margin-left: 6rem;
+}
+.account_activity a {
+    text-decoration: none;
+    color: #262626;
+}

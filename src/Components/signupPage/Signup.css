@@ -1,0 +1,25 @@
+.desc{
+    color: #8e8e8e;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 550;
+}
+.signup_style {
+    margin-top: -20px;
+}
+.signup-height{
+    height: 500px;
+}
+.signup_margin{
+    margin-bottom:-20px;
+}
+.signupbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px;
+}
+.facebook{
+    font-size: 22px;
+    margin-right: 10px;
+}
