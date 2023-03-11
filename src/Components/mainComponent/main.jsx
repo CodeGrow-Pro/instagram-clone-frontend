@@ -161,7 +161,7 @@ const Main = () => {
               const image = imageMaker(us.avtar);
               return (
                 <div className="story user suggestions_user_show">
-                  <Link href="/#/friend">
+                  <Link href={`/#/friend?id=${us._id}`}>
                     {image ? (
                       <img
                         src={`data:image/png;base64,${image}`}
@@ -178,13 +178,13 @@ const Main = () => {
                       />
                     )}
                   </Link>
-                  <Link href="/#/profile">
+                  <Link href={`/#/friend?id=${us._id}`}>
                     <div>
                       <h4 className="username">{us.name}</h4>
                       <p>{us.username} </p>
                     </div>
                   </Link>
-                  <button onClick={handleClickEdit}>Follow</button>
+                  <button onClick={handleClickEdit}>Show</button>
                 </div>
               );
             })}
