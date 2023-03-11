@@ -162,7 +162,7 @@ const Main = () => {
               return (
                 <div className="story user suggestions_user_show">
                   <Link href="/#/friend">
-                    {userImg ? (
+                    {image ? (
                       <img
                         src={`data:image/png;base64,${image}`}
                         alt="user image"
