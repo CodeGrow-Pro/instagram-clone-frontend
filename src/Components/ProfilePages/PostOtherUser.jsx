@@ -14,7 +14,7 @@ const PostOtherUser = () => {
       const getPostotheruserPosts = () => {
         axios({
           method: "get",
-          url: `http://localhost:5600/instagram/v1/post/friend?${userId}`,
+          url: `https://instagram-apis.onrender.com/instagram/v1/post/friend?${userId}`,
           headers: token,
         }).then((res) => {
           const data = res.data.posts;

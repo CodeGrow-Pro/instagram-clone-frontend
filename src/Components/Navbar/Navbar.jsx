@@ -50,7 +50,7 @@ const Navbar = (props) => {
   const getUser = () => {
     axios({
       method: "get",
-      url: "http://localhost:5600/instagram/v1/user/find",
+      url: "https://instagram-apis.onrender.com/instagram/v1/user/find",
       headers: token,
     })
       .then((res) => {

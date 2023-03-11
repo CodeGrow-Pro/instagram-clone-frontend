@@ -9,7 +9,7 @@ const Explore = () => {
   const getPostAll = () => {
     axios({
       method: "get",
-      url: "http://localhost:5600/instagram/v1/post/fetch",
+      url: "https://instagram-apis.onrender.com/instagram/v1/post/fetch",
       headers: token,
     })
       .then((res) => {

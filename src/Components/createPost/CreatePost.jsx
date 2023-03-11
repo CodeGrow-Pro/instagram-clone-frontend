@@ -32,7 +32,7 @@ const CreatePost = (props) => {
     bodyData.append("location", newPost.location);
     axios({
         method:"post",
-        url:"http://localhost:5600/instagram/v1/post/create",
+        url:"https://instagram-apis.onrender.com/instagram/v1/post/create",
         headers:{Auth:token.Auth,"Content-Type":'multipart/form-data'},
         data:bodyData
     }).then((res)=>{
@@ -44,7 +44,7 @@ const CreatePost = (props) => {
   const getUser = () => {
     axios({
       method: "get",
-      url: "http://localhost:5600/instagram/v1/user/find",
+      url: "https://instagram-apis.onrender.com/instagram/v1/user/find",
       headers: token,
     })
       .then((res) => {

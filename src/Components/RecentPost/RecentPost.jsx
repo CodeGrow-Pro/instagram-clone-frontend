@@ -25,7 +25,7 @@ const RecentPost = (props) => {
     const dataSend = {postid:data[0],status:data[1]}
     axios({
       method: "put",
-      url:"http://localhost:5600/instagram/v1/post/like",
+      url:"https://instagram-apis.onrender.com/instagram/v1/post/like",
       headers: {Auth:token.Auth,"Content-Type":"application/json"},
       data:dataSend ,
     })
@@ -54,7 +54,7 @@ const RecentPost = (props) => {
     const dataSend = {postid:data[0],status:data[1]}
     axios({
       method: "put",
-      url:"http://localhost:5600/instagram/v1/post/save",
+      url:"https://instagram-apis.onrender.com/instagram/v1/post/save",
       headers: {Auth:token.Auth,"Content-Type":"application/json"},
       data:dataSend ,
     })
@@ -70,7 +70,7 @@ const RecentPost = (props) => {
   const getPostAll = () => {
     axios({
       method: "get",
-      url: "http://localhost:5600/instagram/v1/post/fetch",
+      url: "https://instagram-apis.onrender.com/instagram/v1/post/fetch",
       headers: token,
     })
       .then((res) => {
@@ -93,7 +93,7 @@ const RecentPost = (props) => {
     const sendData = { comment: comment.comment, postId };
     axios({
       method: "PUT",
-      url: "http://localhost:5600/instagram/v1/post/add-comment",
+      url: "https://instagram-apis.onrender.com/instagram/v1/post/add-comment",
       headers: token,
       data: sendData,
     })
@@ -112,7 +112,7 @@ const RecentPost = (props) => {
   const getUser = () => {
     axios({
       method: "get",
-      url: "http://localhost:5600/instagram/v1/user/find",
+      url: "https://instagram-apis.onrender.com/instagram/v1/user/find",
       headers: token,
     })
       .then((res) => {
@@ -126,7 +126,7 @@ const RecentPost = (props) => {
    const getAllUsers = ()=>{
     axios({
       method: "get",
-      url: `http://localhost:5600/instagram/v1/user/filter`,
+      url: `https://instagram-apis.onrender.com/instagram/v1/user/filter`,
       headers: token,
     })
       .then((res) => {

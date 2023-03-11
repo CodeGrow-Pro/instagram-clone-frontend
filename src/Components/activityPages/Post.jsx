@@ -10,7 +10,7 @@ const Post = (props) => {
     const getPost = () => {
       axios({
         method: "get",
-        url: "http://localhost:5600/instagram/v1/post/find",
+        url: "https://instagram-apis.onrender.com/instagram/v1/post/find",
         headers: token,
       }).then((res) => {
         const data = res.data.posts;

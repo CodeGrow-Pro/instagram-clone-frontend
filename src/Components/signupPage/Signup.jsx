@@ -24,7 +24,7 @@ const Signup = () => {
    const handleSingup = ()=>{
          axios({
             method:"POST",
-            url:'http://localhost:5600/instagram/v1/signup',
+            url:'https://instagram-apis.onrender.com/instagram/v1/signup',
             data:user
          }).then((res)=>{
             window.location = '/#'

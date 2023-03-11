@@ -37,7 +37,7 @@ const UpdateProfile = () => {
     formdata.append("upload", imgs);
     axios({
       method: "put",
-      url: "http://localhost:5600/instagram/v1/user/update",
+      url: "https://instagram-apis.onrender.com/instagram/v1/user/update",
       headers: { Auth: token.Auth, "Content-Type": "multipart/form-data" },
       data: formdata,
     })
@@ -58,7 +58,7 @@ const UpdateProfile = () => {
     formData.append("upload", imgs);
     axios({
       method: "put",
-      url: "http://localhost:5600/instagram/v1/user/update",
+      url: "https://instagram-apis.onrender.com/instagram/v1/user/update",
       headers: token,
       data: formData,
     })
@@ -75,7 +75,7 @@ const UpdateProfile = () => {
   const getUser = () => {
     axios({
       method: "get",
-      url: "http://localhost:5600/instagram/v1/user/find",
+      url: "https://instagram-apis.onrender.com/instagram/v1/user/find",
       headers: token,
     })
       .then((res) => {

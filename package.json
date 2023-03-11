@@ -2,7 +2,7 @@
   "name": "instagram-ui",
   "version": "0.1.0",
   "private": true,
-  "proxy":"http://localhost:5600/instagram/v1",
+  "proxy":"https://instagram-apis.onrender.com/instagram/v1",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

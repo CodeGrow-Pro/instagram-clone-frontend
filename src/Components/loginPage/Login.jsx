@@ -22,7 +22,7 @@ const Login = () => {
   const handleSignin = () => {
     axios({
       method: "POST",
-      url: "http://localhost:5600/instagram/v1/login",
+      url: "https://instagram-apis.onrender.com/instagram/v1/login",
       data: data,
     })
       .then((res) => {
@@ -31,7 +31,7 @@ const Login = () => {
         localStorage.setItem("Id",res.data.userId)
             axios({
               method: "get",
-              url: "http://localhost:5600/instagram/v1/user/find",
+              url: "https://instagram-apis.onrender.com/instagram/v1/user/find",
               headers:token,
             }).then( (res) => {
                 const data = res.data.users

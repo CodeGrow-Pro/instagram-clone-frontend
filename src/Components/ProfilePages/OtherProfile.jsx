@@ -27,7 +27,7 @@ const OtherProfile = (props) => {
   const getUser = () => {
     axios({
       method: "get",
-      url: "http://localhost:5600/instagram/v1/user/find",
+      url: "https://instagram-apis.onrender.com/instagram/v1/user/find",
       headers:token,
     }).then( (res) => {
         const data = res.data.users
@@ -44,7 +44,7 @@ const OtherProfile = (props) => {
   const getUserStroy = () => {
     axios({
       method: "get",
-      url: `http://localhost:5600/instagram/v1/user/filter?${userId}`,
+      url: `https://instagram-apis.onrender.com/instagram/v1/user/filter?${userId}`,
       headers: token,
     })
       .then((res) => {
@@ -59,7 +59,7 @@ const OtherProfile = (props) => {
   const handleFollow = () => {
     axios({
       method: "put",
-      url: `http://localhost:5600/instagram/v1/user/follow?${userId}&status=${follow.status}`,
+      url: `https://instagram-apis.onrender.com/instagram/v1/user/follow?${userId}&status=${follow.status}`,
       headers:token
     }).then((res) => {
       const status = res.data.status
@@ -74,7 +74,7 @@ const OtherProfile = (props) => {
   const getPostotheruserPosts = (data) => {
     axios({
       method: "get",
-      url: `http://localhost:5600/instagram/v1/post/friend?${userId}`,
+      url: `https://instagram-apis.onrender.com/instagram/v1/post/friend?${userId}`,
       headers: token,
     }).then((res) => {
       const post = res.data.posts;
