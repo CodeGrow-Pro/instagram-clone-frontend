@@ -18,7 +18,6 @@ const Main = () => {
     userid: "",
   });
   const handleClickEdit = (id) => {
-    console.log(id);
     if (model.status) {
       setModel({
         style: "openModel",
