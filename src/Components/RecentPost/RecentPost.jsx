@@ -146,16 +146,23 @@ const RecentPost = (props) => {
   return (
     <div>
       <div className="recent-post-body">
-        {posts.map((post, index) => {
+      {posts.map((post, index) => {
           const image = imageMaker(post.image);
-          const time = new Date(Number(post.createdAt)).getDay()
+          const PostUser = allUsers.filter((puser)=>post.userId[0]==puser._id)
+          const postUserName = PostUser.length?PostUser[0].username:user?user.username:"";
+          const postUserImage = PostUser.length?imageMaker(PostUser[0].avtar):user?imageMaker(user.avtar):""
+          const time =new Date().getDay() - new Date(Number(post.createdAt)).getDay()
           return (
             <div className="recent-post" key={index}>
               <div className="head">
                 <div>
                   <span>
-                    <img src={st1} alt="userprofile" className="userprofile" />
-                    <p>{"username"}</p> {time}d
+                    {
+                      postUserImage?
+                      <img src={`data:image/png;base64,${postUserImage}`} alt="userprofile" className="userprofile" />:
+                      <img src={st1} alt="userprofile" className="userprofile" />
+                    }
+                    <p>{postUserName}</p> {time}d
                   </span>
                 </div>
                 <img
@@ -169,7 +176,7 @@ const RecentPost = (props) => {
                 <img
                   src={`data:image/png;base64,${image}`}
                   alt="post image"
-                  onClick={() => props.action(post)}
+                  onClick={() => props.action(post,postUserName,[postUserImage])}
                 />
               </div>
               <div className="head">
@@ -194,7 +201,7 @@ const RecentPost = (props) => {
                     <img
                       src={commentImg}
                       alt="comment"
-                      onClick={() => props.action(post)}
+                      onClick={() => props.action(post,postUserName,[postUserImage])}
                       className="post-like"
                     />
                     <img src={share} alt="share" className="post-like share" />
@@ -204,12 +211,12 @@ const RecentPost = (props) => {
                     Liked by <strong>althea_coser</strong> and{" "}
                     <strong>others</strong>
                     <br />
-                    <strong>pxtarts_ </strong> {post.title} ...More
+                    <strong>{postUserName} </strong> {post.title} ...More
                     <p
                       className="viewcomment"
-                      onClick={() => props.action(post)}
+                      onClick={() => props.action(post,postUserName,[postUserImage])}
                     >
-                      View all 12 comments
+                      View all {post.comment.length} comments
                     </p>
                     <div className="comment-hide">
                       {post.comment.map((com, index) => {

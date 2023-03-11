@@ -13,7 +13,7 @@ const PostShow = (props) => {
   return (
     <div>
       <div className={`model ${props.style}`}>
-        <div className="cross" onClick={props.action}>
+        <div className="cross" onClick={()=>props.action(props.post,props.postUser[0],props.postUser[1])}>
           <FaTimes></FaTimes>
         </div>
         <div className="model-content create-post " id="show-post">
@@ -24,8 +24,10 @@ const PostShow = (props) => {
           </div>
           <div className="postDetails">
             <div className="userProfile">
-              <img src={userImg} alt="" />
-              <p>Username</p>
+              {
+                props.postUser[1]?<img src={`data:image/png;base64,${props.postUser[1]}`}alt="" />:<img src={userImg} alt="" />
+              }
+              <p>{props.postUser[0]}</p>
             </div>
             <div className="comments">
               <div className='comment-body'>

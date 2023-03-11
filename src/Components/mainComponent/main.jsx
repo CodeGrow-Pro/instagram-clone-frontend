@@ -38,18 +38,22 @@ const Main = () => {
     status: false,
     post: "",
   });
-  const handleShowPost = (post) => {
+  const handleShowPost = (post,postUserName,postuserImage) => {
     if (showPost.status) {
       setShowPost({
         style: "",
         status: false,
         post: post,
+        postUsername:postUserName,
+        postUserImage:postuserImage[0]
       });
     } else {
       setShowPost({
         style: "openModel",
         status: true,
         post: post,
+        postUsername:postUserName,
+        postUserImage:postuserImage[0]
       });
     }
   };
@@ -123,6 +127,7 @@ const Main = () => {
             style={showPost.style}
             action={handleShowPost}
             post={showPost.post}
+            postUser={[showPost.postUsername,showPost.postUserImage]}
           />
         </div>
         <div className="suggestion">
