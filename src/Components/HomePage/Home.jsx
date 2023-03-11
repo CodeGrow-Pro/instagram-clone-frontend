@@ -5,7 +5,6 @@ import token from '../../configs/authentication';
 import UserContext from '../../userStore/user-context';
 import Main from '../mainComponent/main';
 import Navbar from '../Navbar/Navbar';
-import Suggestion from '../suggestionPage/suggestion';
 
 import './Home.css'
 const Home = () => {
@@ -24,7 +23,7 @@ const Home = () => {
   };
   useEffect(()=>{
     getUser()
-  })
+  },[])
   return (
     <div>
       <Navbar />

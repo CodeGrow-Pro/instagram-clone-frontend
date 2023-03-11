@@ -19,7 +19,6 @@ const Post = (props) => {
         console.log(error.message)
       });
     };
-
   useEffect(() => {
         getPost();
   }, []);

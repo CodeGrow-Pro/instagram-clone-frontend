@@ -1,6 +1,9 @@
-import React from 'react'
+import { Link } from '@mui/material'
+import React, { useState } from 'react'
 import './Model.css'
 const Model = (props) => {
+  const currentUserId = localStorage.getItem("Id")
+
   return (
     <div>
         <div className={`model ${props.style}`}>
@@ -12,7 +15,7 @@ const Model = (props) => {
                 <p>Share to ...</p>
                 <p>Copy link</p>
                 <p>Embed</p>
-                <p>About this account</p>
+                <p><Link className='selected' href={currentUserId!==props.userId?`/#/friend?id=${props.userId}`:  `/#/profile`}>About this account</Link></p>
                 <p onClick={props.editpopup}>Cancel</p>
             </div>
         </div>

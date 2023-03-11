@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import "./Profile.css";
-import userImg from "../../images/pp1.png";
+import st1 from "../../images/pp1.png";
 import { Link } from "@mui/material";
 import axios from "axios";
 import imageMaker from "../../imageConverter/imageMaker";
@@ -56,12 +56,10 @@ const Profile = (props) => {
         <div className="account">
           <div className="user_account">
             <div className="account_details">
-              {
-                <img
-                  src={`data:image/png;base64,${userImg}`}
-                  alt="user image"
-                />
-              }
+            {
+                   userImg ? <img  src={`data:image/png;base64,${userImg}`} alt="user image" />:
+                   <img  src={st1} alt="user image"/>
+               }
             </div>
             <div className="action">
               <div className="details">

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import "./Profile.css";
-import userImg from "../../images/pp1.png";
+import st1 from "../../images/pp1.png";
 import { Link } from "@mui/material";
 import axios from "axios";
 import token from "../../configs/authentication";
@@ -20,8 +20,8 @@ const OtherProfile = (props) => {
        posts:""
   })
   const [follow, setFollow] = useState({
-    text:"",
-    status:""
+    text:"follow",
+    status:"false"
   });
   const data = JSON.parse(localStorage.getItem("user"));
   const getUser = () => {
@@ -99,12 +99,10 @@ const OtherProfile = (props) => {
         <div className="account">
           <div className="user_account">
             <div className="account_details">
-              {
-                <img
-                  src={`data:image/png;base64,${userImg}`}
-                  alt="user image"
-                />
-              }
+            {
+                   userImg?<img  src={`data:image/png;base64,${userImg}`} alt="user image" />:
+                   <img  src={st1} alt="user image"/>
+               }
             </div>
             <div className="action">
               <div className="details">

@@ -31,6 +31,7 @@
 .model-content .selected{
     color: rgb(244, 85, 85);
     font-weight: 500;
+    text-decoration: none;
 }
 .openModel {
     display: initial;

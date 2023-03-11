@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./CreatePost.css";
 import drop from "../../images/drag-and-drop.png";
-import userImg from "../../images/pp4.jpeg";
+import st1 from "../../images/pp4.jpeg";
 import { Link } from "@mui/material";
 import token from "../../configs/authentication";
 import imageMaker from "../../imageConverter/imageMaker";
 import getUser from "../../imageConverter/userget";
 import axios from "axios";
+import { FaTimes } from "react-icons/fa";
 const CreatePost = (props) => {
   const [user, setUser] = useState("");
   const [newPost, setNewPost] = useState({
@@ -32,7 +33,7 @@ const CreatePost = (props) => {
     axios({
         method:"post",
         url:"http://localhost:5600/instagram/v1/post/create",
-        headers:token,
+        headers:{Auth:token.Auth,"Content-Type":'multipart/form-data'},
         data:bodyData
     }).then((res)=>{
         alert("post share successfully.")
@@ -55,12 +56,16 @@ const CreatePost = (props) => {
       });
   };
   const userImg = imageMaker(user.avtar);
+  const uploadedImage = imageMaker(image)
   useEffect(() => {
     getUser();
   }, []);
   return (
     <div>
       <div className={`model ${props.style}`}>
+      <div className="cross" onClick={props.action}>
+          <FaTimes></FaTimes>
+        </div>
         <div className="model-content create-post">
           <div className="upload">
             <div className="title">
@@ -78,7 +83,10 @@ const CreatePost = (props) => {
           </div>
           <div className="postDetails">
             <div className="userProfile">
-              <img src={`data:image/png;base64,${userImg}`} alt="user" />
+            {
+                   userImg ? <img  src={`data:image/png;base64,${userImg}`} alt="user image" />:
+                   <img  src={st1} alt="user image"/>
+               }
               <p>{user.username}</p>
             </div>
             <div className="desc">

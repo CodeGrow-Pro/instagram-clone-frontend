@@ -28,6 +28,7 @@ const Login = () => {
       .then((res) => {
         const token = res.data.accessToken;
         localStorage.setItem("token", token);
+        localStorage.setItem("Id",res.data.userId)
             axios({
               method: "get",
               url: "http://localhost:5600/instagram/v1/user/find",
@@ -39,7 +40,7 @@ const Login = () => {
               .catch((err) => {
                 console.log(err.message);
               });
-              window.location = "/#/home" ;
+              window.location.assign('/#/home')
       })
       .catch((err) => {
         console.log(err.message);

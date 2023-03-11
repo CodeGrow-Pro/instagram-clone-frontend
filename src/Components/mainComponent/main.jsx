@@ -10,42 +10,46 @@ import token from "../../configs/authentication";
 import Story from "./Story";
 import imageMaker from "../../imageConverter/imageMaker";
 const Main = () => {
-  const [user,setUser] = useState("")
+  const [user, setUser] = useState("");
+  const [unKnownUser, setUnknownUser] = useState([]);
   const [model, setModel] = useState({
     style: "",
     status: true,
+    userid: "",
   });
-  const handleClickEdit = (e) => {
-    e.preventDefault();
+  const handleClickEdit = (id) => {
+    console.log(id);
     if (model.status) {
       setModel({
         style: "openModel",
         status: false,
+        userid: id,
       });
     } else {
       setModel({
         style: "",
         status: true,
+        userid: id,
       });
     }
   };
   const [showPost, setShowPost] = useState({
     style: "",
     status: false,
-    post:""
+    post: "",
   });
   const handleShowPost = (post) => {
     if (showPost.status) {
       setShowPost({
         style: "",
         status: false,
-        post:post
+        post: post,
       });
     } else {
       setShowPost({
         style: "openModel",
         status: true,
-        post:post
+        post: post,
       });
     }
   };
@@ -55,11 +59,12 @@ const Main = () => {
     axios({
       method: "get",
       url: "http://localhost:5600/instagram/v1/user/find",
-      headers:token,
-    }).then( (res) => {
-        const data = res.data.users
-        setUser(data)
-         localStorage.setItem("user",JSON.stringify(data))
+      headers: token,
+    })
+      .then((res) => {
+        const data = res.data.users;
+        setUser(data);
+        localStorage.setItem("user", JSON.stringify(data));
       })
       .catch((err) => {
         console.log(err.message);
@@ -72,36 +77,72 @@ const Main = () => {
       headers: token,
     })
       .then((res) => {
-        const data = res.data.users
-        setStoryUser(data);
+        const data = res.data.users;
+        const users = [];
+        const otherUser = [];
+        const id = localStorage.getItem("Id");
+        data.forEach((usr) => {
+          if (usr.followers.includes(id)) {
+            users.push(usr);
+          } else {
+            otherUser.push(usr);
+          }
+        });
+        setStoryUser(users);
+        setUnknownUser(otherUser);
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
-  useEffect(()=>{
-    getUser()
-    getUserStroy()
-
-  },[])
-  const userImg = imageMaker(user.avtar)
+  useEffect(() => {
+    getUser();
+    getUserStroy();
+  }, []);
+  const userImg = imageMaker(user.avtar);
+  const logout = ()=>{
+    localStorage.clear()
+    window.location.assign('/')
+  }
   return (
     <div>
       <section className="posts">
         <div className="stories">
           <div className="stories-body">
-            {storyUser.map((item,index) => {
-              return <Story user={item} key={index}/>;
+            {storyUser.map((item, index) => {
+              return <Story user={item} key={index} />;
             })}
           </div>
           <RecentPost editpopup={handleClickEdit} action={handleShowPost} />
-          <Model style={model.style} editpopup={handleClickEdit} />
-          <PostShow style={showPost.style} action={handleShowPost} post={showPost.post}/>
+          <Model
+            style={model.style}
+            editpopup={handleClickEdit}
+            userId={model.userid}
+          />
+          <PostShow
+            style={showPost.style}
+            action={handleShowPost}
+            post={showPost.post}
+          />
         </div>
         <div className="suggestion">
           <div className="story user">
             <Link href="/#/profile">
-              <img  src={`data:image/png;base64,${userImg}`} alt="" width={"60px"} height={"60px"} />
+              {userImg ? (
+                <img
+                  src={`data:image/png;base64,${userImg}`}
+                  alt="user image"
+                  width={"60px"}
+                  height={"60px"}
+                />
+              ) : (
+                <img
+                  src={st1}
+                  alt="user image"
+                  width={"60px"}
+                  height={"60px"}
+                />
+              )}
             </Link>
             <Link href="/#/profile">
               <div>
@@ -109,49 +150,44 @@ const Main = () => {
                 <p>{user.name}</p>
               </div>
             </Link>
-            <button>Switch</button>
+            <button onClick={logout}>Logout</button>
           </div>
           <div className="suggestion_user">
             <p>Suggestions for you </p>
             <span>
               <button>See All</button>
             </span>
-            <div className="story user suggestions_user_show">
-              <Link href="/#/friend">
-                <img src={st1} alt="" width={"60px"} height={"60px"} />
-              </Link>
-              <Link href="/#/profile">
-                <div>
-                  <h4 className="username">user name</h4>
-                  <p>username </p>
+            {unKnownUser.map((us) => {
+              const image = imageMaker(us.avtar);
+              return (
+                <div className="story user suggestions_user_show">
+                  <Link href="/#/friend">
+                    {userImg ? (
+                      <img
+                        src={`data:image/png;base64,${image}`}
+                        alt="user image"
+                        width={"60px"}
+                        height={"60px"}
+                      />
+                    ) : (
+                      <img
+                        src={st1}
+                        alt="user image"
+                        width={"60px"}
+                        height={"60px"}
+                      />
+                    )}
+                  </Link>
+                  <Link href="/#/profile">
+                    <div>
+                      <h4 className="username">{us.name}</h4>
+                      <p>{us.username} </p>
+                    </div>
+                  </Link>
+                  <button onClick={handleClickEdit}>Follow</button>
                 </div>
-              </Link>
-              <button>Follow</button>
-            </div>
-            <div className="story user suggestions_user_show">
-              <Link href="/#/friend">
-                <img src={st1} alt="" width={"60px"} height={"60px"} />
-              </Link>
-              <Link href="/#/friend">
-                <div>
-                  <h4 className="username">user name</h4>
-                  <p>username </p>
-                </div>
-              </Link>
-              <button>Follow</button>
-            </div>
-            <div className="story user suggestions_user_show">
-              <Link href="/#/friend">
-                <img src={st1} alt="" width={"60px"} height={"60px"} />
-              </Link>
-              <Link href="/#/friend">
-                <div>
-                  <h4 className="username">user name</h4>
-                  <p>username </p>
-                </div>
-              </Link>
-              <button>Follow</button>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
