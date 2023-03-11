@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import './Model.css'
 const Model = (props) => {
   const currentUserId = localStorage.getItem("Id")
-  console.log(props)
   return (
     <div>
         <div className={`model ${props.style}`}>

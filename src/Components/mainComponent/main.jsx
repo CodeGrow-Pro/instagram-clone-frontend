@@ -189,7 +189,7 @@ const Main = () => {
                       <p>{us.username} </p>
                     </div>
                   </Link>
-                  <button onClick={handleClickEdit}>Show</button>
+                  <button onClick={()=>handleClickEdit(us._id)}>Show</button>
                 </div>
               );
             })}
