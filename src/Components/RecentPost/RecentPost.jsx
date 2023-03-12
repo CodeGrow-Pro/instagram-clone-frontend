@@ -31,7 +31,7 @@ const RecentPost = (props) => {
     })
       .then((res) => {
         // alert("like successfully");
-        window.location.reload()
+        // window.location.reload()
       })
       .catch((err) => {
         console.log(err.message);
@@ -60,7 +60,7 @@ const RecentPost = (props) => {
     })
       .then((res) => {
         // alert("save successfully");
-        window.location.reload()
+        // window.location.reload()
       })
       .catch((err) => {
         console.log(err.message);
@@ -90,18 +90,21 @@ const RecentPost = (props) => {
     setComment({ [name]: value });
   };
   const addComment = (postId) => {
-    const sendData = { comment: comment.comment, postId };
+    const body = new FormData()
+    body.append("comment",comment.comment)
+    body.append("postId",postId)
     axios({
       method: "PUT",
       url: "https://instagram-apis.onrender.com/instagram/v1/post/add-comment",
-      headers: token,
-      data: sendData,
+      headers: {Auth:token.Auth,"Content-Type":"application/json"},
+      data: body,
     })
       .then((res) => {
         setComment({
           comment: "",
         });
         alert("add comment successfully");
+        // window.location.reload()
       })
       .catch((err) => {
         console.log(err.message);

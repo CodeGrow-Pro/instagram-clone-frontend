@@ -20,6 +20,8 @@ const Navbar = (props) => {
   const redirect = (isLogin) => {
     if (!isLogin) {
       window.location.assign("/");
+    }else{
+      window.location.assign('/#/home')
     }
   };
   if (!localStorage.getItem("token")) {

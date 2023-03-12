@@ -5,6 +5,9 @@ import insta_logo from "../../images/logoinsta.png";
 import fb from "../../images/fb.png";
 import playstore from "../../images/play.png";
 import phone3 from "../../images/phone3.png";
+import phone1 from "../../images/phone1.png";
+import phone2 from "../../images/phone2.png";
+import phone4 from "../../images/phone4.png";
 import axios from "axios";
 import "./Login.css";
 import token from "../../configs/authentication";
@@ -58,7 +61,10 @@ const Login = () => {
             </div>
             <div className="loginpage_right">
               <img className="loginpage_logo" src={insta_logo} alt="logo" />
-              <img src={changeImg} className="phones" alt="phones" />
+              <img src={phone1} className="phones" alt="phones" id="phone1" />
+              <img src={phone2} className="phones" alt="phones" id="phone2"/>
+              <img src={phone3} className="phones" alt="phones" id="phone3"/>
+              <img src={phone4} className="phones" alt="phones" id="phone4"/>
               <div className="logoinpage_signin">
                 <input
                   className="loginpage_text"
