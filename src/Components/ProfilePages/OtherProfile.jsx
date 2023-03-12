@@ -20,7 +20,7 @@ const OtherProfile = (props) => {
        posts:""
   })
   const [follow, setFollow] = useState({
-    text:"follow",
+    text:"Follow",
     status:"false"
   });
   const data = JSON.parse(localStorage.getItem("user"));

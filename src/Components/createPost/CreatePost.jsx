@@ -37,6 +37,7 @@ const CreatePost = (props) => {
         data:bodyData
     }).then((res)=>{
         alert("post share successfully.")
+        window.location.reload()
     }).catch((error)=>{
         console.log(error.message)
     })
