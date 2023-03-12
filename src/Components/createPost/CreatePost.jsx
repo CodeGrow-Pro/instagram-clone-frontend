@@ -74,7 +74,7 @@ const CreatePost = (props) => {
             <div className="files">
               <img src={drop} alt="drag and drop" />
               <p>Drag photos and videos here</p>
-              <input type="file" name="upload" onChange={handlechangeUpload} maxFileSize/>
+              <input type="file" name="upload" onChange={handlechangeUpload}/>
             </div>
             {/* <button onClick={props.action} className="nextbtn">next</button> */}
             <p className="cancel" onClick={props.action}>
