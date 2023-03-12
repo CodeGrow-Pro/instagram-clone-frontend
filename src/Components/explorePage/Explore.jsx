@@ -30,12 +30,9 @@ const Explore = () => {
       <section className="postsByuser explore">
         <div className="post">
           {post.map((item) => {
-            const base64String = btoa(
-              String.fromCharCode(...new Uint32Array(item.image.data))
-            );
             return (
               <img
-                src={`data:image/png;base64,${base64String}`}
+                src={item.image}
                 key={item._id}
                 alt="post1"
               />

@@ -154,10 +154,10 @@ const RecentPost = (props) => {
     <div>
       <div className="recent-post-body">
       {posts.map((post, index) => {
-          const image = imageMaker(post.image);
+          const image = post.image
           const PostUser = allUsers.filter((puser)=>post.userId[0]==puser._id)
           const postUserName = PostUser.length?PostUser[0].username:user?user.username:"";
-          const postUserImage = PostUser.length?imageMaker(PostUser[0].avtar):user?imageMaker(user.avtar):""
+          const postUserImage = PostUser.length?PostUser[0].avtar:user?user.avtar:""
           const time =new Date().getDay() - new Date(Number(post.createdAt)).getDay()
           return (
             <div className="recent-post" key={index}>
@@ -166,7 +166,7 @@ const RecentPost = (props) => {
                   <span>
                     {
                       postUserImage?
-                      <img src={`data:image/png;base64,${postUserImage}`} alt="userprofile" className="userprofile" />:
+                      <img src={postUserImage} alt="userprofile" className="userprofile" />:
                       <img src={st1} alt="userprofile" className="userprofile" />
                     }
                     <p>{postUserName}</p> {time}d
@@ -181,7 +181,7 @@ const RecentPost = (props) => {
               </div>
               <div className="media">
                 <img
-                  src={`data:image/png;base64,${image}`}
+                  src={post.image}
                   alt="post image"
                   onClick={() => props.action(post,postUserName,[postUserImage])}
                 />

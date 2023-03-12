@@ -89,7 +89,7 @@ const UpdateProfile = () => {
   useEffect(() => {
     getUser();
   });
-  const userImg = imageMaker(user.avtar);
+  const userImg =user.avtar
   return (
     <div>
       <Navbar />
@@ -97,7 +97,7 @@ const UpdateProfile = () => {
         <div className="update_inputs">
           <div className="profile_img">
             {userImg ? (
-              <img src={`data:image/png;base64,${userImg}`} alt="user image" />
+              <img src={userImg} alt="user image" />
             ) : (
               <img src={userImg2} alt="user image" />
             )}

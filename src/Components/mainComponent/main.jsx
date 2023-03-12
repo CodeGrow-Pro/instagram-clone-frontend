@@ -102,7 +102,7 @@ const Main = () => {
     getUser();
     getUserStroy();
   }, []);
-  const userImg = imageMaker(user.avtar);
+  const userImg = user.avtar
   const logout = ()=>{
     localStorage.clear()
     window.location.assign('/')
@@ -134,7 +134,7 @@ const Main = () => {
             <Link href="/#/profile">
               {userImg ? (
                 <img
-                  src={`data:image/png;base64,${userImg}`}
+                  src={userImg}
                   alt="user image"
                   width={"60px"}
                   height={"60px"}
@@ -162,13 +162,13 @@ const Main = () => {
               <button>See All</button>
             </span>
             {unKnownUser.map((us) => {
-              const image = imageMaker(us.avtar);
+              const image =us.avtar;
               return (
                 <div className="story user suggestions_user_show">
                   <Link href={`/#/friend?id=${us._id}`}>
                     {image ? (
                       <img
-                        src={`data:image/png;base64,${image}`}
+                        src={image}
                         alt="user image"
                         width={"60px"}
                         height={"60px"}

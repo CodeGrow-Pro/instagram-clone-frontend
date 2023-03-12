@@ -48,7 +48,7 @@ const Profile = (props) => {
   useEffect(() => {
     getUser()
   }, []);
-     const userImg = imageMaker(data.avtar)
+     const userImg =data.avtar
   return (
     <div>
       <Navbar />
@@ -57,7 +57,7 @@ const Profile = (props) => {
           <div className="user_account">
             <div className="account_details">
             {
-                   userImg ? <img  src={`data:image/png;base64,${userImg}`} alt="user image" />:
+                   userImg ? <img  src={userImg} alt="user image" />:
                    <img  src={st1} alt="user image"/>
                }
             </div>

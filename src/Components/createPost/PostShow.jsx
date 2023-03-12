@@ -9,7 +9,7 @@ import axios from "axios";
 import token from "../../configs/authentication";
 const PostShow = (props) => {
   const [comment,setComment] = useState("")
-  const image = imageMaker(props.post.image);
+  const image =props.post.image
   return (
     <div>
       <div className={`model ${props.style}`}>
@@ -19,13 +19,13 @@ const PostShow = (props) => {
         <div className="model-content create-post " id="show-post">
           <div className="upload">
             <div className="files" id="post-image">
-              <img src={`data:image/png;base64,${image}`} alt="post" />
+              <img src={image} alt="post" />
             </div>
           </div>
           <div className="postDetails">
             <div className="userProfile">
               {
-                props.postUser[1]?<img src={`data:image/png;base64,${props.postUser[1]}`}alt="" />:<img src={userImg} alt="" />
+                props.postUser[1]?<img src={props.postUser[1]}alt="" />:<img src={userImg} alt="" />
               }
               <p>{props.postUser[0]}</p>
             </div>

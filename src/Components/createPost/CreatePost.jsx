@@ -55,8 +55,8 @@ const CreatePost = (props) => {
         console.log(err.message);
       });
   };
-  const userImg = imageMaker(user.avtar);
-  const uploadedImage = imageMaker(image)
+  const userImg = user.avtar;
+  const uploadedImage = image
   useEffect(() => {
     getUser();
   }, []);
@@ -84,7 +84,7 @@ const CreatePost = (props) => {
           <div className="postDetails">
             <div className="userProfile">
             {
-                   userImg ? <img  src={`data:image/png;base64,${userImg}`} alt="user image" />:
+                   userImg ? <img  src={userImg} alt="user image" />:
                    <img  src={st1} alt="user image"/>
                }
               <p>{user.username}</p>

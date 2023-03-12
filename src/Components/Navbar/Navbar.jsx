@@ -66,7 +66,7 @@ const Navbar = (props) => {
   useEffect(() => {
     getUser();
   }, []);
-  const Userimg = imageMaker(currUser.avtar);
+  const Userimg = currUser.avtar
   const logout = () => {
     localStorage.clear();
     window.location = "/";
@@ -150,7 +150,7 @@ const Navbar = (props) => {
                 {Userimg ? (
                     <img
                     className="profile"
-                      src={`data:image/png;base64,${Userimg}`}
+                      src={Userimg}
                       alt="user image"
                       width={"25px"}
                       height={"25px"}
