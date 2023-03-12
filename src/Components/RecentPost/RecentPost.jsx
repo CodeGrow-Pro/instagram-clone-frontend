@@ -15,7 +15,9 @@ import token from "../../configs/authentication";
 const RecentPost = (props) => {
   // const [user,setUser] = useState()
   const userId = localStorage.getItem("Id");
-  const [like, setLike] = useState("");
+  const [like, setLike] = useState({
+   status:false
+  });
   const [saved, setSaved] = useState({
     icon: save,
     status: false,
@@ -30,27 +32,28 @@ const RecentPost = (props) => {
       data:dataSend ,
     })
       .then((res) => {
-        // alert("like successfully");
-        // window.location.reload()
+        setLike({
+          status:true
+        })
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
   const handleClickSave = (data) => {
-    if (saved.status) {
-      setSaved({
-        icon: save,
-        status: false,
-        style: "edit",
-      });
-    } else {
-      setSaved({
-        icon: save2,
-        status: true,
-        style: "edit2",
-      });
-    }
+    // if (saved.status) {
+    //   setSaved({
+    //     icon: save,
+    //     status: false,
+    //     style: "edit",
+    //   });
+    // } else {
+    //   setSaved({
+    //     icon: save2,
+    //     status: true,
+    //     style: "edit2",
+    //   });
+    // }
     const dataSend = {postid:data[0],status:data[1]}
     axios({
       method: "put",
@@ -59,8 +62,11 @@ const RecentPost = (props) => {
       data:dataSend ,
     })
       .then((res) => {
-        // alert("save successfully");
-        // window.location.reload()
+        setSaved({
+          icon: save,
+          status: false,
+          style: "edit",
+        });
       })
       .catch((err) => {
         console.log(err.message);
@@ -93,6 +99,7 @@ const RecentPost = (props) => {
     const body = new FormData()
     body.append("comment",comment.comment)
     body.append("postId",postId)
+    setComment({comment:""});
     axios({
       method: "PUT",
       url: "https://instagram-apis.onrender.com/instagram/v1/post/add-comment",
@@ -100,15 +107,12 @@ const RecentPost = (props) => {
       data: body,
     })
       .then((res) => {
-        setComment({
-          comment: "",
-        });
-        alert("add comment successfully");
-        // window.location.reload()
+            console.log(res.data.message)
       })
       .catch((err) => {
         console.log(err.message);
       });
+      
   };
   const [user, setUser] = useState();
   const [allUsers,setAllUsers] = useState([])
@@ -144,7 +148,7 @@ const RecentPost = (props) => {
     getUser();
     getPostAll();
     getAllUsers()
-  }, []);
+  }, [like,saved,comment]);
 
   return (
     <div>
@@ -223,9 +227,11 @@ const RecentPost = (props) => {
                     </p>
                     <div className="comment-hide">
                       {post.comment.map((com, index) => {
+                         const indexS = post.comment.length-index - 1
+                         const values = post.comment[indexS]
                         return (
                           <>
-                            <strong>pxtarts_ {index}</strong> {com} <br />
+                            <strong>pxtarts_ {indexS}</strong> {values} <br />
                           </>
                         );
                       })}
@@ -237,7 +243,7 @@ const RecentPost = (props) => {
                         type="text"
                         name="comment"
                         placeholder="Add a comment..."
-                        defaultValue={comment.comment}
+                        value={comment.comment}
                         onChange={handlechangeComment}
                       />
                       <button
