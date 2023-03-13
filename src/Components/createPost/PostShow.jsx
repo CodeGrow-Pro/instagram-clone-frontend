@@ -8,7 +8,8 @@ import imageMaker from "../../imageConverter/imageMaker";
 import axios from "axios";
 import token from "../../configs/authentication";
 const PostShow = (props) => {
-  const [comment,setComment] = useState("")
+  const checkComment = props.post.comment ? true:false;
+  const comment = props.post.comment
   const image =props.post.image
   return (
     <div>
@@ -30,77 +31,17 @@ const PostShow = (props) => {
               <p>{props.postUser[0]}</p>
             </div>
             <div className="comments">
-              <div className='comment-body'>
-                  <div className='comments-user'>
-             <img src={userImg} alt="comment user" />
-             <p>username</p>
-             </div>
-             
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi laborum corporis libero.</p>
-                  </div>
-                  <div className='comment-body'>
-                  <div className='comments-user'>
-             <img src={userImg} alt="comment user" />
-             <p>username</p>
-             </div>
-             
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi laborum corporis libero.</p>
-                  </div>
-                  <div className='comment-body'>
-                  <div className='comments-user'>
-             <img src={userImg} alt="comment user" />
-             <p>username</p>
-             </div>
-             
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi laborum corporis libero.</p>
-                  </div>
-                  <div className='comment-body'>
-                  <div className='comments-user'>
-             <img src={userImg} alt="comment user" />
-             <p>username</p>
-             </div>
-             
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi laborum corporis libero.</p>
-                  </div>
-                  <div className='comment-body'>
-                  <div className='comments-user'>
-             <img src={userImg} alt="comment user" />
-             <p>username</p>
-             </div>
-             
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi laborum corporis libero.</p>
-                  </div>
-                  <div className='comment-body'>
-                  <div className='comments-user'>
-             <img src={userImg} alt="comment user" />
-             <p>username</p>
-             </div>
-             
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi laborum corporis libero.</p>
-                  </div>
-              {!comment ??
+              {checkComment ?
                 comment.map((com, index) => {
                   return (
                     <div className="comment-body" key={index}>
                       <div className="comments-user">
                         <img src={userImg} alt="comment user" />
-                        <p>{index}</p>
                       </div>
                       <p>{com}</p>
                     </div>
-                  );
-                })}
-
-              <div className="comment-body">
-                <div className="comments-user">
-                  <img src={userImg} alt="comment user" />
-                  <p>username</p>
-                </div>
-                {!comment ??
-                  comment.map((com, index) => {
-                    return <p key={index}>{com}</p>;
-                  })}
-              </div>
+                  )
+                }):""}
             </div>
             <div className="comment-inputs">
               <input type="text" placeholder="Add a comment..." />
