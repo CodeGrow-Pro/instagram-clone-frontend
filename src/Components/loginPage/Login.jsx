@@ -13,6 +13,7 @@ import "./Login.css";
 import token from "../../configs/authentication";
 const Login = () => {
   const [changeImg, setChangeImg] = useState(phone3);
+  const [loader,setLoader] = useState("")
   const [data, setData] = useState({
     data: "",
     password: "",
@@ -23,6 +24,7 @@ const Login = () => {
     setData({ ...data, [name]: value });
   };
   const handleSignin = () => {
+    setLoader("loader")
     axios({
       method: "POST",
       url: "https://instagram-apis.onrender.com/instagram/v1/login",
@@ -38,6 +40,7 @@ const Login = () => {
               headers:token,
             }).then( (res) => {
                 const data = res.data.users
+                setLoader("")
                  localStorage.setItem("user",JSON.stringify(data))
               })
               .catch((err) => {
@@ -82,8 +85,9 @@ const Login = () => {
                   type="password"
                   placeholder="Password"
                 />
+                <div className={loader}></div>
                 <button className="login_button" onClick={handleSignin}>
-                  Log in
+                  {!loader?"Log in":""}
                 </button>
               </div>
               <div className="login_ordiv">

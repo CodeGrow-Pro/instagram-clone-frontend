@@ -122,3 +122,21 @@ body {
     margin: 5px;
     cursor: pointer;
 }
+.loader{
+    width: 15px;
+    height: 15px;
+    border: 2.5px dashed white;
+    border-radius: 50%;
+    animation: round 1s infinite;
+    position: absolute;
+    top: 230px;
+    left: 170px;
+}
+@keyframes round {
+     from{
+        transform: rotate(0deg);
+     }
+     to {
+        transform: rotate(360deg);
+     }
+}
