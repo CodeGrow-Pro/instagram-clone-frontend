@@ -44,6 +44,7 @@ const Login = () => {
                  localStorage.setItem("user",JSON.stringify(data))
               })
               .catch((err) => {
+                setLoader("")
                 console.log(err.message);
               });
               window.location.assign('/#/home')
